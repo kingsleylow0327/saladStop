@@ -1,14 +1,19 @@
-import json
+import db_query
+from db_query import get_query_data
 from flask import Flask, request
-from initialise_db import init_database_from_excel
-from list_of_var import EXCEL_PATH
 from json_return import json_return
+from list_of_var import EXCEL_PATH
 
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
+@app.route("/data", methods=["GET"])
+def get_data():
+    start_date = request.args.get("startDate")
+    end_date = request.args.get("endDate")
+    return get_query_data(start_date,end_date)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Initialize db everytime flask app is started
-    init_database_from_excel(EXCEL_PATH)
-    app.run(debug = True)
+    db_query.init_database_from_excel(EXCEL_PATH)
+    app.run(debug=True)
