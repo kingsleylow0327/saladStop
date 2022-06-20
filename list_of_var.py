@@ -22,7 +22,7 @@ INIT_QUERY = ["DROP DATABASE IF EXISTS {}",
 
 # Query
 SQL_QUERY = """
-SELECT 
+SELECT
 SUM(`Total incl GST`) AS `totalCost`,
 AVG(`Unitprice - SGD`) AS `avgCostWoGst`,
 `Country of origin` AS `topSupplierCountry`
