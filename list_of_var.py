@@ -1,7 +1,15 @@
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+# Load from .env file
+DOT_ENV_PATH = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path=DOT_ENV_PATH)
+
 # Connection Credential
-HOSTNAME = "localhost"
-UNAME = "root"
-PWD = "123456"
+HOSTNAME = os.getenv("MYSQL_HOST")
+UNAME = os.getenv("MYSQL_USER")
+PWD = os.getenv("MYSQL_PASS")
 
 # Database Name
 DB_NAME = "salad_stop"

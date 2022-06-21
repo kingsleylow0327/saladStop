@@ -1,0 +1,12 @@
+FROM python:3.9.4-buster
+
+WORKDIR /app
+
+#Copy source code
+COPY ./ .
+
+#Install Dependancy
+RUN pip3 install -r /app/requirement.txt
+
+#Run Application
+CMD ["python3", "/app/app.py"]

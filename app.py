@@ -17,4 +17,4 @@ def get_data():
 if __name__ == "__main__":
     # Initialize db everytime flask app is started
     db_query.init_database_from_excel(EXCEL_PATH)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

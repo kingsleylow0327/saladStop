@@ -1,7 +1,7 @@
 import errors
 
 
-class json_return:
+class JsonReturn:
     def __init__(self,
                  total_cost,
                  avg_cost_wo_gst,
@@ -9,8 +9,8 @@ class json_return:
                  error_code=0):
 
         if error_code == 0:
-            self.ret_json = {"totalCost": total_cost,
-                             "avgCostWoGst": avg_cost_wo_gst,
+            self.ret_json = {"totalCost": "{:.2f}".format(float(total_cost)),
+                             "avgCostWoGst": "{:.2f}".format(float(avg_cost_wo_gst)),  # noqa: E501
                              "topSupplierCountry": top_supplier_country}
         else:
             self.ret_json = errors.ERROR_MAP[error_code]
